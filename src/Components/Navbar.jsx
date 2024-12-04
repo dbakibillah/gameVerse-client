@@ -4,7 +4,7 @@ const Navbar = () => {
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/">All Reviews</NavLink></li>
+        {/* <li><NavLink>All Reviews</NavLink></li> */}
     </>
     return (
         <section>
