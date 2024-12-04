@@ -13,22 +13,50 @@ const Registration = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                setUser(result.user);
+                const user = result.user;
+                setUser(user);
+
+                // save to database 
+                const newUser = {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL,
+                };
+                fetch("http://localhost:5000/users", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newUser),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                    })
+                    .catch((error) => {
+                        console.error("Error saving user data:", error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Failed to save user data",
+                            text: error.message,
+                        });
+                    });
+
                 navigate(location.state?.from?.pathname || "/", { replace: true });
                 Swal.fire({
                     title: "Good job!",
-                    text: "Registration successfully!",
-                    icon: "success"
+                    text: "Registration successfully with Google!",
+                    icon: "success",
                 });
             })
             .catch(err => {
                 Swal.fire({
                     title: "Something went wrong!",
                     text: err.message,
-                    icon: "error"
+                    icon: "error",
                 });
             });
-    }
+    };
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -59,6 +87,29 @@ const Registration = () => {
         createUser(email, password)
             .then((result) => {
                 setUser(result.user);
+
+                // Save user to database
+                const newUser = { name, email, photo };
+                fetch("http://localhost:5000/users", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newUser),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log("User data saved to database:", data);
+                    })
+                    .catch((error) => {
+                        console.error("Error saving user data:", error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Failed to save user data",
+                            text: error.message,
+                        });
+                    });
+
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
                         Swal.fire({

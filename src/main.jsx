@@ -12,6 +12,7 @@ import AuthProvider from './providers/AuthProviders.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import Registration from './pages/Registration.jsx';
 import Home from './pages/Home.jsx';
+import AddReview from './pages/AddReview.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Registration />,
+      },
+      {
+        path: "/addreview",
+        element: <AddReview />,
       }
     ]
   },
