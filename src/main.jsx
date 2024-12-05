@@ -13,6 +13,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import Registration from './pages/Registration.jsx';
 import Home from './pages/Home.jsx';
 import AddReview from './pages/AddReview.jsx';
+import MyReviews from './pages/MyReviews.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/addreview",
         element: <AddReview />,
+      },
+      {
+        path: "/myreviews",
+        element: <MyReviews />,
       }
     ]
   },
