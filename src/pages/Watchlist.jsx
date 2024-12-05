@@ -16,7 +16,9 @@ const Watchlist = () => {
 
         fetch(`http://localhost:5000/watchlist?email=${user.email}`)
             .then((res) => res.json())
-            .then((data) => setWatchlist(data))
+            .then((data) => {
+                setWatchlist(data);
+            })
             .catch((error) => console.error("Error fetching watchlist:", error));
     }, [user, navigate]);
 
