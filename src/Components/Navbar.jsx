@@ -27,11 +27,12 @@ const Navbar = () => {
     const links = (
         <>
             <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/reviews">All Reviews</NavLink></li>
+            <li><NavLink to="/addreview">Add Review</NavLink></li>
             {user && (
                 <>
-                    <li><NavLink to="/addreview">Add Review</NavLink></li>
                     <li><NavLink to="/myreviews">My Reviews</NavLink></li>
-                    <li><NavLink to="/gamewatchlist">Game WatchList</NavLink></li>
+                    <li><NavLink to="/mywatchlist">My WatchList</NavLink></li>
                 </>
             )}
         </>

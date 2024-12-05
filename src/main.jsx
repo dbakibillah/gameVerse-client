@@ -14,6 +14,10 @@ import Registration from './pages/Registration.jsx';
 import Home from './pages/Home.jsx';
 import AddReview from './pages/AddReview.jsx';
 import MyReviews from './pages/MyReviews.jsx';
+import ReviewDetails from './pages/ReviewDetails.jsx';
+import AllReviews from './pages/AllRevirews.jsx';
+import PrivateRoute from './routes/PrivateRoute.jsx';
+import Watchlist from './pages/Watchlist.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,11 +39,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/addreview",
-        element: <AddReview />,
+        element: <PrivateRoute><AddReview /></PrivateRoute>,
       },
       {
         path: "/myreviews",
         element: <MyReviews />,
+      },
+      {
+        path: "/reviews",
+        element: <AllReviews />,
+      },
+      {
+        path: "/reviews/:id",
+        element: <ReviewDetails />,
+        loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`),
+      },
+      {
+        path: "/mywatchlist",
+        element: <PrivateRoute><Watchlist /></PrivateRoute>,
       }
     ]
   },
