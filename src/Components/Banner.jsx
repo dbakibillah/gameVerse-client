@@ -4,7 +4,7 @@ import "@madzadev/image-slider/dist/index.css";
 const Banner = () => {
     const images = [
         { url: "https://i.ibb.co.com/WzB68bY/g4.jpg" },
-        { url: "https://i.ibb.co.com/Zh80GVj/g5.jpg" },
+        { url: "https://i.ibb.co.com/47f79bf/g5.jpg" },
         { url: "https://i.ibb.co.com/0s8MJfq/g3.jpg" },
         { url: "https://i.ibb.co.com/rGCkHfR/g2.jpg" },
         { url: "https://i.ibb.co.com/QrDfxj4/g1.jpg" },
