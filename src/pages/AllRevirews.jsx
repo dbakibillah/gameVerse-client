@@ -4,15 +4,29 @@ import { Link } from "react-router-dom";
 const AllReviews = () => {
     const [reviews, setReviews] = useState([]);
     const [sortOption, setSortOption] = useState("");
-    const fetchReviews = (sortField, sortOrder) => {
-        const query = sortField
-            ? `?sortField=${sortField}&sortOrder=${sortOrder}`
-            : "";
-        fetch(`http://localhost:5000/sortreviews${query}`)
+    const [selectedGenre, setSelectedGenre] = useState("");
+    const [genres, setGenres] = useState([]);
+    const [isGenreDropdownOpen, setIsGenreDropdownOpen] = useState(false);
+    const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
+
+    const fetchReviews = (sortField, sortOrder, genreFilter) => {
+        const query = new URLSearchParams();
+        if (sortField) query.append("sortField", sortField);
+        if (sortOrder) query.append("sortOrder", sortOrder);
+        if (genreFilter) query.append("genre", genreFilter);
+
+        fetch(`http://localhost:5000/sortreviews?${query.toString()}`)
             .then((res) => res.json())
             .then((data) => setReviews(data))
             .catch((error) => console.error("Error fetching reviews:", error));
     };
+
+    useEffect(() => {
+        fetch("http://localhost:5000/sortgenre")
+            .then((res) => res.json())
+            .then((data) => setGenres(data))
+            .catch((error) => console.error("Error fetching genres:", error));
+    }, []);
 
     useEffect(() => {
         fetchReviews();
@@ -24,16 +38,19 @@ const AllReviews = () => {
 
         if (value === "rating-asc") {
             fetchReviews("rating", "asc");
-        }
-        else if (value === "rating-desc") {
+        } else if (value === "rating-desc") {
             fetchReviews("rating", "desc");
-        }
-        else if (value === "year-asc") {
+        } else if (value === "year-asc") {
             fetchReviews("publishingYear", "asc");
-        }
-        else if (value === "year-desc") {
+        } else if (value === "year-desc") {
             fetchReviews("publishingYear", "desc");
         }
+    };
+
+    const handleGenreFilter = (e) => {
+        const genre = e.target.value;
+        setSelectedGenre(genre);
+        fetchReviews(null, null, genre);
     };
 
     return (
@@ -43,18 +60,91 @@ const AllReviews = () => {
                     All Reviews
                 </h2>
 
-                <div className="flex justify-end mb-6">
-                    <select
-                        value={sortOption}
-                        onChange={handleSortChange}
-                        className="select select-bordered"
+                <div className="flex justify-end mb-6 gap-2 items-center">
+                    <details
+                        className="dropdown"
+                        onToggle={(e) => setIsGenreDropdownOpen(e.target.open)}
                     >
-                        <option value="">Sort By</option>
-                        <option value="rating-asc">Rating (Low to High)</option>
-                        <option value="rating-desc">Rating (High to Low)</option>
-                        <option value="year-asc">Year (Oldest to Newest)</option>
-                        <option value="year-desc">Year (Newest to Oldest)</option>
-                    </select>
+                        <summary className="btn m-1 flex items-center gap-2">
+                            Filter by Genre
+                            <i
+                                className={`fa-solid text-lg ${isGenreDropdownOpen ? "fa-caret-up" : "fa-caret-down"
+                                    }`}
+                            ></i>
+                        </summary>
+                        <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-1">
+                            <li>
+                                <button
+                                    className={`btn btn-ghost w-full ${selectedGenre === "" && "font-bold text-blue-500"
+                                        }`}
+                                    onClick={handleGenreFilter}
+                                    value=""
+                                >
+                                    All
+                                </button>
+                            </li>
+                            {genres.map((genre) => (
+                                <li key={genre._id}>
+                                    <button
+                                        className={`btn btn-ghost w-full ${selectedGenre === genre._id && "font-bold text-blue-500"
+                                            }`}
+                                        onClick={handleGenreFilter}
+                                        value={genre._id}
+                                    >
+                                        {genre._id} ({genre.count} Reviews)
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </details>
+
+                    <details
+                        className="dropdown ml-2"
+                        onToggle={(e) => setIsSortDropdownOpen(e.target.open)}
+                    >
+                        <summary className="btn flex items-center gap-2">
+                            Sort By
+                            <i
+                                className={`fa-solid text-lg ${isSortDropdownOpen ? "fa-caret-up" : "fa-caret-down"
+                                    }`}
+                            ></i>
+                        </summary>
+                        <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-1">
+                            <li>
+                                <button
+                                    className={`btn btn-ghost w-full ${sortOption === "rating-asc" && "font-bold text-blue-500"
+                                        }`}
+                                    onClick={() => handleSortChange({ target: { value: "rating-asc" } })}
+                                >
+                                    Rating (Low to High)
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    className={`btn btn-ghost w-full ${sortOption === "rating-desc" && "font-bold text-blue-500"}`}
+                                    onClick={() => handleSortChange({ target: { value: "rating-desc" } })}>
+                                    Rating (High to Low)
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    className={`btn btn-ghost w-full ${sortOption === "year-asc" && "font-bold text-blue-500"
+                                        }`}
+                                    onClick={() => handleSortChange({ target: { value: "year-asc" } })}>
+                                    Year (Oldest to Newest)
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    className={`btn btn-ghost w-full ${sortOption === "year-desc" && "font-bold text-blue-500"
+                                        }`}
+                                    onClick={() => handleSortChange({ target: { value: "year-desc" } })}
+                                >
+                                    Year (Newest to Oldest)
+                                </button>
+                            </li>
+                        </ul>
+                    </details>
                 </div>
 
                 {reviews.length === 0 ? (
