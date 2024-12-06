@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 import Swal from "sweetalert2";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
@@ -86,9 +87,13 @@ const Navbar = () => {
                             <label
                                 tabIndex={0}
                                 className="btn btn-ghost btn-circle avatar"
-                                title={user.displayName || "User"}
                             >
-                                <div className="w-12 rounded-full">
+                                <div
+                                    className="w-12 rounded-full"
+                                    data-tooltip-id="my-tooltip"
+                                    data-tooltip-content={user.displayName || "User"}
+                                    data-tooltip-place="bottom"
+                                >
                                     <img
                                         src={user.photoURL || "https://via.placeholder.com/150"}
                                         alt="User Avatar"
@@ -126,6 +131,10 @@ const Navbar = () => {
                     )}
                 </div>
             </div>
+            <Tooltip
+                id="my-tooltip"
+                style={{ zIndex: 1 }}
+            />
         </section>
     );
 };

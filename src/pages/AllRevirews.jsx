@@ -3,13 +3,38 @@ import { Link } from "react-router-dom";
 
 const AllReviews = () => {
     const [reviews, setReviews] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:5000/reviews")
+    const [sortOption, setSortOption] = useState("");
+    const fetchReviews = (sortField, sortOrder) => {
+        const query = sortField
+            ? `?sortField=${sortField}&sortOrder=${sortOrder}`
+            : "";
+        fetch(`http://localhost:5000/sortreviews${query}`)
             .then((res) => res.json())
             .then((data) => setReviews(data))
             .catch((error) => console.error("Error fetching reviews:", error));
+    };
+
+    useEffect(() => {
+        fetchReviews();
     }, []);
+
+    const handleSortChange = (e) => {
+        const value = e.target.value;
+        setSortOption(value);
+
+        if (value === "rating-asc") {
+            fetchReviews("rating", "asc");
+        }
+        else if (value === "rating-desc") {
+            fetchReviews("rating", "desc");
+        }
+        else if (value === "year-asc") {
+            fetchReviews("publishingYear", "asc");
+        }
+        else if (value === "year-desc") {
+            fetchReviews("publishingYear", "desc");
+        }
+    };
 
     return (
         <section className="bg-gray-50 py-10">
@@ -17,6 +42,20 @@ const AllReviews = () => {
                 <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
                     All Reviews
                 </h2>
+
+                <div className="flex justify-end mb-6">
+                    <select
+                        value={sortOption}
+                        onChange={handleSortChange}
+                        className="select select-bordered"
+                    >
+                        <option value="">Sort By</option>
+                        <option value="rating-asc">Rating (Low to High)</option>
+                        <option value="rating-desc">Rating (High to Low)</option>
+                        <option value="year-asc">Year (Oldest to Newest)</option>
+                        <option value="year-desc">Year (Newest to Oldest)</option>
+                    </select>
+                </div>
 
                 {reviews.length === 0 ? (
                     <p className="text-center text-gray-500">No reviews available.</p>
