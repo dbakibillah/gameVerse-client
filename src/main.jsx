@@ -46,7 +46,6 @@ const router = createBrowserRouter([
       {
         path: "/myreviews",
         element: <PrivateRoute><MyReviews /></PrivateRoute>,
-        // loader: ({ params }) => fetch(`http://localhost:5000/reviews?email=${params.email}`),
       },
       {
         path: "/reviews",
@@ -80,5 +79,4 @@ createRoot(document.getElementById('root')).render(
       </AuthProvider>
     </ThemeProvider>
   </StrictMode>,
-
 )

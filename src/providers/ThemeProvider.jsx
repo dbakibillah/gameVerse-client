@@ -1,12 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-// Create a ThemeContext
 export const ThemeContext = createContext(null);
-
 export const ThemeProvider = ({ children }) => {
     const [darkMode, setDarkMode] = useState(false);
 
-    // Apply the dark mode class to the root element
     useEffect(() => {
         const root = document.documentElement;
         if (darkMode) {
@@ -22,9 +19,5 @@ export const ThemeProvider = ({ children }) => {
         </ThemeContext.Provider>
     );
 };
-
-// export const useTheme = () => {
-//     return useContext(ThemeContext);
-// };
 
 export default ThemeProvider;

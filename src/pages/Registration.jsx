@@ -15,8 +15,6 @@ const Registration = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
-
-                // save to database 
                 const newUser = {
                     name: user.displayName,
                     email: user.email,
@@ -88,7 +86,6 @@ const Registration = () => {
             .then((result) => {
                 setUser(result.user);
 
-                // Save user to database
                 const newUser = { name, email, photo };
                 fetch("http://localhost:5000/users", {
                     method: "POST",
