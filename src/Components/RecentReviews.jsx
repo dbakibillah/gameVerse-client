@@ -18,15 +18,17 @@ const RecentReviews = () => {
     };
 
     return (
-        <section className="bg-blue-50 py-10">
+        <section className="bg-blue-50 py-10 dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">Recently Added Games</h2>
+                <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+                    Recently Added Games
+                </h2>
                 <Marquee gradient={false} pauseOnHover={true}>
                     <div className="flex">
                         {reviews.map((review) => (
                             <div
                                 key={review._id}
-                                className="bg-white mx-2 rounded-lg p-5 w-1/3 cursor-pointer hover:shadow-xl transition duration-300"
+                                className="bg-white dark:bg-gray-800 mx-2 rounded-lg p-5 w-1/3 cursor-pointer hover:shadow-xl transition duration-300 dark:hover:shadow-gray-700"
                                 onClick={() => handleCardClick(review._id)}
                             >
                                 <img
@@ -34,7 +36,7 @@ const RecentReviews = () => {
                                     alt={review.title}
                                     className="w-full h-48 object-cover rounded-lg mb-4"
                                 />
-                                <h3 className="text-sm font-bold text-gray-800">
+                                <h3 className="text-sm font-bold text-gray-800 dark:text-gray-100">
                                     {review.title}
                                 </h3>
                             </div>

@@ -96,15 +96,15 @@ const UpdateReview = () => {
     };
 
     return (
-        <section className="bg-gray-50 py-10">
-            <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
-                <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+        <section className="bg-gray-50 dark:bg-gray-900 py-10">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8">
+                <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
                     Update Review
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
+                        <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
                             Game Cover Image URL
                         </label>
                         <input
@@ -113,13 +113,13 @@ const UpdateReview = () => {
                             placeholder="Enter game cover image URL"
                             value={reviewData.coverImage}
                             onChange={handleChange}
-                            className="input input-bordered w-full"
+                            className="input input-bordered w-full dark:bg-gray-700 dark:text-gray-200"
                             required
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
+                        <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
                             Game Title
                         </label>
                         <input
@@ -128,13 +128,13 @@ const UpdateReview = () => {
                             placeholder="Enter game title"
                             value={reviewData.title}
                             onChange={handleChange}
-                            className="input input-bordered w-full"
+                            className="input input-bordered w-full dark:bg-gray-700 dark:text-gray-200"
                             required
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
+                        <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
                             Review Description
                         </label>
                         <textarea
@@ -142,7 +142,7 @@ const UpdateReview = () => {
                             placeholder="Enter a detailed review"
                             value={reviewData.description}
                             onChange={handleChange}
-                            className="textarea textarea-bordered w-full"
+                            className="textarea textarea-bordered w-full dark:bg-gray-700 dark:text-gray-200"
                             rows="5"
                             required
                         ></textarea>
@@ -150,7 +150,7 @@ const UpdateReview = () => {
 
                     <div className="flex flex-col md:flex-row md:items-center md:gap-8">
                         <div className="flex-1">
-                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
                                 Rating (1-5)
                             </label>
                             <Rating
@@ -162,7 +162,7 @@ const UpdateReview = () => {
                         </div>
 
                         <div className="flex-1">
-                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
                                 Publishing Year
                             </label>
                             <input
@@ -171,21 +171,21 @@ const UpdateReview = () => {
                                 placeholder="Enter publishing year (e.g., 2021)"
                                 value={reviewData.publishingYear}
                                 onChange={handleChange}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-gray-700 dark:text-gray-200"
                                 required
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
+                        <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
                             Genre
                         </label>
                         <select
                             name="genre"
                             value={reviewData.genre}
                             onChange={handleChange}
-                            className="select select-bordered w-full"
+                            className="select select-bordered w-full dark:bg-gray-700 dark:text-gray-200"
                             required
                         >
                             <option value="Action">Action</option>
@@ -198,24 +198,24 @@ const UpdateReview = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
                                 User Name
                             </label>
                             <input
                                 type="text"
                                 value={user.displayName}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-gray-700 dark:text-gray-200"
                                 readOnly
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                            <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
                                 User Email
                             </label>
                             <input
                                 type="email"
                                 value={user.email}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full dark:bg-gray-700 dark:text-gray-200"
                                 readOnly
                             />
                         </div>
@@ -224,7 +224,7 @@ const UpdateReview = () => {
                     <div className="text-center">
                         <button
                             type="submit"
-                            className="btn bg-c3 text-white hover:bg-c3-dark w-full"
+                            className="btn border-none bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-bold w-full"
                         >
                             Update Review
                         </button>

@@ -19,6 +19,7 @@ import AllReviews from './pages/AllRevirews.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
 import Watchlist from './pages/Watchlist.jsx';
 import UpdateReview from './pages/UpdateReview.jsx';
+import ThemeProvider from './providers/ThemeProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -73,8 +74,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </ThemeProvider>
   </StrictMode>,
+
 )

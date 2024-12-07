@@ -17,18 +17,24 @@ const GameCategories = () => {
     };
 
     return (
-        <section className="bg-gray-100 py-10">
+        <section className="bg-gray-100 dark:bg-gray-900 py-10">
             <div className="max-w-7xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">Explore by Categories</h2>
+                <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+                    Explore by Categories
+                </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {categories.map((category) => (
                         <div
                             key={category._id}
-                            className="bg-white shadow-lg rounded-lg p-6 cursor-pointer hover:shadow-xl transition duration-300"
+                            className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 cursor-pointer hover:shadow-xl transition duration-300"
                             onClick={() => handleCardClick(category._id)}
                         >
-                            <h3 className="text-xl font-bold text-gray-800">{category._id}</h3>
-                            <p className="text-gray-600">{category.count} Reviews</p>
+                            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+                                {category._id}
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300">
+                                {category.count} Reviews
+                            </p>
                         </div>
                     ))}
                 </div>

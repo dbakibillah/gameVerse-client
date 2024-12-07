@@ -11,7 +11,7 @@ const Banner = () => {
     ];
 
     return (
-        <section className="overflow-x-hidden">
+        <section className="overflow-x-hidden dark:bg-gray-900">
             <div className="w-[95%] md:w-5/6 mx-auto">
                 <Slider
                     imageList={images}

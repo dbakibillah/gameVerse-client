@@ -1,11 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
+    const { darkMode, setDarkMode } = useContext(ThemeContext);
+
+    const handleToggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
 
     const handleLogout = () => {
         signOutUser()
@@ -40,8 +47,8 @@ const Navbar = () => {
     );
 
     return (
-        <section>
-            <div className="navbar container mx-auto bg-base-100 lg:px-24">
+        <section className="dark:bg-gray-900">
+            <div className="navbar container mx-auto bg-base-100 dark:bg-gray-900 dark:text-gray-200 lg:px-24">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div
@@ -82,53 +89,62 @@ const Navbar = () => {
                 </div>
 
                 <div className="navbar-end">
-                    {user ? (
-                        <div className="dropdown dropdown-end">
-                            <label
-                                tabIndex={0}
-                                className="btn btn-ghost btn-circle avatar"
-                            >
-                                <div
-                                    className="w-12 rounded-full"
-                                    data-tooltip-id="my-tooltip"
-                                    data-tooltip-content={user.displayName || "User"}
-                                    data-tooltip-place="bottom"
+                    <div className="flex gap-4 items-center">
+                        {user ? (
+                            <div className="dropdown dropdown-end">
+                                <label
+                                    tabIndex={0}
+                                    className="btn btn-ghost btn-circle avatar"
                                 >
-                                    <img
-                                        src={user.photoURL || "https://via.placeholder.com/150"}
-                                        alt="User Avatar"
-                                    />
-                                </div>
-                            </label>
-                            <ul
-                                tabIndex={0}
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10"
-                            >
-                                <li>
-                                    <span className="font-bold">
-                                        Hello, {user.displayName || "User"}!
-                                    </span>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={handleLogout}
-                                        className="btn btn-ghost"
+                                    <div
+                                        className="w-12 rounded-full"
+                                        data-tooltip-id="my-tooltip"
+                                        data-tooltip-content={user.displayName || "User"}
+                                        data-tooltip-place="bottom"
                                     >
-                                        Log Out
-                                    </button>
-                                </li>
-                            </ul>
+                                        <img
+                                            src={user.photoURL || "https://via.placeholder.com/150"}
+                                            alt="User Avatar"
+                                        />
+                                    </div>
+                                </label>
+                                <ul
+                                    tabIndex={0}
+                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10"
+                                >
+                                    <li>
+                                        <span className="font-bold">
+                                            Hello, {user.displayName || "User"}!
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <button
+                                            onClick={handleLogout}
+                                            className="btn btn-ghost"
+                                        >
+                                            Log Out
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        ) : (
+                            <span className="flex gap-2">
+                                <Link to="/login" className="btn btn-ghost">
+                                    Login
+                                </Link>
+                                <Link to="/register" className="btn btn-ghost">
+                                    Register
+                                </Link>
+                            </span>
+                        )}
+                        <div>
+                            <button onClick={handleToggleDarkMode} className="btn btn-ghost btn-circle btn-sm">
+                                {
+                                    darkMode ? <MdOutlineLightMode className="text-xl" /> : <MdOutlineDarkMode className="text-xl" />
+                                }
+                            </button>
                         </div>
-                    ) : (
-                        <span className="flex gap-2">
-                            <Link to="/login" className="btn btn-ghost">
-                                Login
-                            </Link>
-                            <Link to="/register" className="btn btn-ghost">
-                                Register
-                            </Link>
-                        </span>
-                    )}
+                    </div>
                 </div>
             </div>
             <Tooltip
