@@ -210,7 +210,7 @@ const Registration = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <button type="submit" className="btn bg-c3 text-white">
+                        <button type="submit" className="btn bg-blue-600 text-white">
                             Registration
                         </button>
                     </div>

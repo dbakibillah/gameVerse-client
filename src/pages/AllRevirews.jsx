@@ -178,7 +178,7 @@ const AllReviews = () => {
                                 </p>
                                 <Link
                                     to={`/reviews/${review._id}`}
-                                    className="btn mt-auto dark:bg-gray-600 dark:text-gray-100 border-none dark:hover:bg-gray-700"
+                                    className="btn mt-auto bg-blue-500 text-gray-100 dark:bg-gray-600 dark:text-gray-100 border-none dark:hover:bg-gray-700"
                                 >
                                     Explore Details
                                 </Link>
