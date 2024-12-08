@@ -25,7 +25,7 @@ const ReviewDetails = () => {
             userEmail: user.email,
         };
 
-        fetch("http://localhost:5000/watchlist", {
+        fetch("https://game-verse-server-six.vercel.app/watchlist", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(watchlistData),

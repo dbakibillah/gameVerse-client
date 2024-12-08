@@ -21,7 +21,7 @@ const AddReview = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:5000/sortgenre")
+        fetch("https://game-verse-server-six.vercel.app/sortgenre")
             .then((res) => res.json())
             .then((data) => setGenres(data.map((genre) => genre._id)))
             .catch((error) => console.error("Error fetching genres:", error));
@@ -45,7 +45,7 @@ const AddReview = () => {
             userName: user.displayName,
         };
 
-        fetch("http://localhost:5000/reviews", {
+        fetch("https://game-verse-server-six.vercel.app/reviews", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newReview),

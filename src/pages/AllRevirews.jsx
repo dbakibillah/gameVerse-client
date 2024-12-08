@@ -15,14 +15,14 @@ const AllReviews = () => {
         if (sortOrder) query.append("sortOrder", sortOrder);
         if (genreFilter) query.append("genre", genreFilter);
 
-        fetch(`http://localhost:5000/sortreviews?${query.toString()}`)
+        fetch(`https://game-verse-server-six.vercel.app/sortreviews?${query.toString()}`)
             .then((res) => res.json())
             .then((data) => setReviews(data))
             .catch((error) => console.error("Error fetching reviews:", error));
     };
 
     useEffect(() => {
-        fetch("http://localhost:5000/sortgenre")
+        fetch("https://game-verse-server-six.vercel.app/sortgenre")
             .then((res) => res.json())
             .then((data) => setGenres(data))
             .catch((error) => console.error("Error fetching genres:", error));

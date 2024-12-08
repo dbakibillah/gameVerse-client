@@ -20,7 +20,7 @@ const Registration = () => {
                     email: user.email,
                     photo: user.photoURL,
                 };
-                fetch("http://localhost:5000/users", {
+                fetch("https://game-verse-server-six.vercel.app/users", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const Registration = () => {
                 setUser(result.user);
 
                 const newUser = { name, email, photo };
-                fetch("http://localhost:5000/users", {
+                fetch("https://game-verse-server-six.vercel.app/users", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

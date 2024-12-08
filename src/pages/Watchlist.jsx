@@ -14,7 +14,7 @@ const Watchlist = () => {
             return;
         }
 
-        fetch(`http://localhost:5000/watchlist?email=${user.email}`)
+        fetch(`https://game-verse-server-six.vercel.app/watchlist?email=${user.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setWatchlist(data);
@@ -23,7 +23,7 @@ const Watchlist = () => {
     }, [user, navigate]);
 
     const handleRemove = (id) => {
-        fetch(`http://localhost:5000/watchlist/${id}`, {
+        fetch(`https://game-verse-server-six.vercel.app/watchlist/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

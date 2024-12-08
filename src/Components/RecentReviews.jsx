@@ -7,7 +7,7 @@ const RecentReviews = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/recentReviews")
+        fetch("https://game-verse-server-six.vercel.app/recentReviews")
             .then((res) => res.json())
             .then((data) => setReviews(data))
             .catch((error) => console.error("Error fetching recent reviews:", error));

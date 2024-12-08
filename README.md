@@ -2,7 +2,10 @@
 
 - gameVerse is a dynamic online platform where users can explore a wide range of games, read reviews, add their own reviews, and interact with other gamers in the community. It combines entertainment with a rich, engaging user experience, making it the perfect destination for game enthusiasts.
 
-## Live Preview: 
+## Live Preview: https://gameverse-d7e8c.web.app/
+
+**client side:** https://gameverse-d7e8c.web.app/
+**server side:** game-verse-server-six.vercel.app
 
 ## Features
 

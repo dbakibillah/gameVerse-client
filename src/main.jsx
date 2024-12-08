@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: "/reviews/:id",
         element: <ReviewDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`),
+        loader: ({ params }) => fetch(`https://game-verse-server-six.vercel.app/reviews/${params.id}`),
       },
       {
         path: "/mywatchlist",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         path: "/updatereview/:id",
         element: <UpdateReview />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.id}`),
+          fetch(`https://game-verse-server-six.vercel.app/reviews/${params.id}`),
       },
 
     ]

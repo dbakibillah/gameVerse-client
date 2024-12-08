@@ -6,7 +6,7 @@ const GameCategories = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/gamecategories")
+        fetch("https://game-verse-server-six.vercel.app/gamecategories")
             .then((res) => res.json())
             .then((data) => setCategories(data))
             .catch((error) => console.error("Error fetching categories:", error));

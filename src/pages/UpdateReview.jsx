@@ -25,7 +25,7 @@ const UpdateReview = () => {
             return;
         }
 
-        fetch(`http://localhost:5000/reviews/${id}`)
+        fetch(`https://game-verse-server-six.vercel.app/reviews/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
@@ -61,7 +61,7 @@ const UpdateReview = () => {
             userName: user.displayName,
         };
 
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://game-verse-server-six.vercel.app/reviews/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedReview),
