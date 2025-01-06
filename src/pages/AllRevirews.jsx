@@ -55,7 +55,7 @@ const AllReviews = () => {
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900 py-10">
-            <div className="container mx-auto">
+            <div className="container mx-auto lg:px-24 px-4">
                 <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-neutral-100">
                     All Reviews
                 </h2>

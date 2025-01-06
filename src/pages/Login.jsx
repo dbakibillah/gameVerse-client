@@ -78,20 +78,23 @@ const Login = () => {
     };
 
     return (
-        <section className="bg-base-100 py-36">
-            <div className="card w-full max-w-sm shadow-2xl mx-auto animate__animated animate__bounceInDown animate__slow">
-                <h2 className="text-3xl font-bold text-center p-5 text-c3">Login</h2>
-                <form onSubmit={handleLogin} className="card-body">
-
+        <section className="bg-gray-50 dark:bg-gray-900 py-36">
+            <div className="card w-full max-w-sm shadow-2xl bg-white dark:bg-gray-800 mx-auto animate__animated animate__bounceInDown animate__slow">
+                <h2 className="text-3xl font-bold text-center p-5 text-blue-600 dark:text-blue-400">
+                    Login
+                </h2>
+                <form onSubmit={handleLogin} className="card-body space-y-4">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text text-gray-800 dark:text-gray-300">
+                                Email
+                            </span>
                         </label>
                         <input
                             name="email"
                             type="email"
-                            placeholder="Email"
-                            className="input input-bordered"
+                            placeholder="Enter your email"
+                            className="input input-bordered dark:bg-gray-700 dark:text-gray-100"
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
@@ -99,19 +102,21 @@ const Login = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text text-gray-800 dark:text-gray-300">
+                                Password
+                            </span>
                         </label>
                         <div className="relative">
                             <input
                                 name="password"
                                 type={showPassword ? "text" : "password"}
-                                placeholder="Password"
-                                className="input input-bordered w-full"
+                                placeholder="Enter your password"
+                                className="input input-bordered w-full dark:bg-gray-700 dark:text-gray-100"
                                 required
                             />
                             <span
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-3 cursor-pointer text-gray-500"
+                                className="absolute right-3 top-3 cursor-pointer text-gray-500 dark:text-gray-300"
                             >
                                 {showPassword ? (
                                     <i className="fa-solid fa-eye-slash"></i>
@@ -126,7 +131,10 @@ const Login = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <button type="submit" className="btn bg-blue-600 text-white">
+                        <button
+                            type="submit"
+                            className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold transition-transform duration-300 hover:scale-105 border-none"
+                        >
                             Login
                         </button>
                     </div>
@@ -135,7 +143,7 @@ const Login = () => {
                         <button
                             onClick={handleGoogleSignIn}
                             type="button"
-                            className="btn w-full flex items-center gap-3 bg-white border text-black hover:bg-gray-200"
+                            className="btn w-full flex items-center gap-3 bg-white border text-black dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-transform duration-300 hover:scale-105"
                         >
                             <img
                                 src="https://i.ibb.co/WnqDNrk/google.png"
@@ -147,9 +155,12 @@ const Login = () => {
                     </div>
 
                     <div className="mt-4 text-center">
-                        <p className="text-sm">
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
                             Don&apos;t have an account?{" "}
-                            <Link to="/register" className="link link-hover text-c2 font-bold">
+                            <Link
+                                to="/register"
+                                className="link link-hover text-blue-600 dark:text-blue-400 font-bold"
+                            >
                                 Register
                             </Link>
                         </p>

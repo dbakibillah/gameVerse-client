@@ -27,12 +27,8 @@ const Registration = () => {
                     },
                     body: JSON.stringify(newUser),
                 })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                    })
-                    .catch((error) => {
-                        console.error("Error saving user data:", error);
+                    .then(response => response.json())
+                    .catch(error => {
                         Swal.fire({
                             icon: "error",
                             title: "Failed to save user data",
@@ -40,7 +36,7 @@ const Registration = () => {
                         });
                     });
 
-                navigate(location.state?.from?.pathname || "/", { replace: true });
+                navigate("/", { replace: true });
                 Swal.fire({
                     title: "Good job!",
                     text: "Registration successfully with Google!",
@@ -56,7 +52,7 @@ const Registration = () => {
             });
     };
 
-    const handleRegister = (event) => {
+    const handleRegister = event => {
         event.preventDefault();
 
         const name = event.target.name.value;
@@ -83,7 +79,7 @@ const Registration = () => {
         setPasswordError("");
 
         createUser(email, password)
-            .then((result) => {
+            .then(result => {
                 setUser(result.user);
 
                 const newUser = { name, email, photo };
@@ -93,109 +89,109 @@ const Registration = () => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(newUser),
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log("User data saved to database:", data);
-                    })
-                    .catch((error) => {
-                        console.error("Error saving user data:", error);
-                        Swal.fire({
-                            icon: "error",
-                            title: "Failed to save user data",
-                            text: error.message,
-                        });
+                }).catch(error => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Failed to save user data",
+                        text: error.message,
                     });
+                });
 
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
                         Swal.fire({
-                            position: "middle",
                             icon: "success",
                             title: "User created successfully",
-                            showConfirmButton: false,
                             timer: 1500,
                         });
                         navigate("/");
                     })
-                    .catch((err) => {
+                    .catch(err => {
                         Swal.fire({
                             icon: "error",
                             title: "Failed to create user",
                             text: err.message,
-                            confirmButtonText: "Try again",
                         });
                     });
             })
-            .catch((err) => {
+            .catch(err => {
                 Swal.fire({
                     icon: "error",
                     title: "Failed to create user",
                     text: err.message,
-                    confirmButtonText: "Try again",
                 });
             });
     };
 
     return (
-        <section className="bg-base-100 p-2 py-10 lg:py-16">
-            <div className="card w-full max-w-sm shadow-2xl mx-auto animate__animated animate__bounceInDown animate__slow">
-                <h2 className="text-3xl font-bold text-center text-c3 mt-4">Registration</h2>
-                <form onSubmit={handleRegister} className="card-body">
+        <section className="bg-gray-50 dark:bg-gray-900 py-10 lg:py-16">
+            <div className="card w-full max-w-sm shadow-2xl bg-white dark:bg-gray-800 mx-auto animate__animated animate__bounceInDown">
+                <h2 className="text-3xl font-bold text-center text-blue-600 dark:text-blue-400 mt-4">
+                    Registration
+                </h2>
+                <form onSubmit={handleRegister} className="card-body space-y-4">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text text-gray-800 dark:text-gray-300">
+                                Name
+                            </span>
                         </label>
                         <input
                             type="text"
                             name="name"
-                            placeholder="Name"
-                            className="input input-bordered"
+                            placeholder="Enter your name"
+                            className="input input-bordered dark:bg-gray-700 dark:text-gray-100"
                             required
                         />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text text-gray-800 dark:text-gray-300">
+                                Email
+                            </span>
                         </label>
                         <input
                             type="email"
                             name="email"
-                            placeholder="email"
-                            className="input input-bordered"
+                            placeholder="Enter your email"
+                            className="input input-bordered dark:bg-gray-700 dark:text-gray-100"
                             required
                         />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Photo URL</span>
+                            <span className="label-text text-gray-800 dark:text-gray-300">
+                                Photo URL
+                            </span>
                         </label>
                         <input
                             type="text"
                             name="photo"
                             placeholder="Photo URL"
-                            className="input input-bordered"
+                            className="input input-bordered dark:bg-gray-700 dark:text-gray-100"
                             required
                         />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text text-gray-800 dark:text-gray-300">
+                                Password
+                            </span>
                         </label>
                         <div className="relative">
                             <input
                                 type={showPassword ? "text" : "password"}
                                 name="password"
-                                placeholder="Password"
-                                className="input input-bordered w-full"
+                                placeholder="Enter your password"
+                                className="input input-bordered w-full dark:bg-gray-700 dark:text-gray-100"
                                 required
                             />
                             <span
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-3 cursor-pointer text-gray-500"
+                                className="absolute right-3 top-3 cursor-pointer text-gray-500 dark:text-gray-300"
                             >
                                 {showPassword ? (
                                     <i className="fa-solid fa-eye-slash"></i>
@@ -210,8 +206,11 @@ const Registration = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <button type="submit" className="btn bg-blue-600 text-white">
-                            Registration
+                        <button
+                            type="submit"
+                            className="btn bg-blue-600 hover:bg-blue-700 text-white w-full transition-transform duration-300 hover:scale-105 border-none"
+                        >
+                            Register
                         </button>
                     </div>
 
@@ -219,7 +218,7 @@ const Registration = () => {
                         <button
                             onClick={handleGoogleSignIn}
                             type="button"
-                            className="btn w-full flex items-center gap-3 bg-white border text-black hover:bg-gray-200"
+                            className="btn w-full flex items-center gap-3 bg-white border text-black dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600"
                         >
                             <img
                                 src="https://i.ibb.co/WnqDNrk/google.png"
@@ -230,10 +229,10 @@ const Registration = () => {
                         </button>
                     </div>
 
-                    <div className="mt-2">
-                        <p className="text-center text-sm">
+                    <div className="mt-2 text-center">
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
                             Already have an account?{" "}
-                            <Link to="/login" className="link link-hover text-c2 font-bold">
+                            <Link to="/login" className="link link-hover text-blue-600 dark:text-blue-400 font-bold">
                                 Login
                             </Link>
                         </p>

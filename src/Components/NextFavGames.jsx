@@ -14,7 +14,7 @@ const NextFavGames = () => {
 
     return (
         <section className="bg-gray-100 dark:bg-gray-900 py-10">
-            <div className="container mx-auto px-4 text-center">
+            <div className="container mx-auto px-4 lg:px-24 text-center">
                 <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
                     Welcome to <span className="text-blue-600">{text}</span>
                 </h2>

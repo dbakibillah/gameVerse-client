@@ -18,7 +18,7 @@ const GameCategories = () => {
 
     return (
         <section className="bg-gray-100 dark:bg-gray-900 py-10">
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="container mx-auto lg:px-24 px-4">
                 <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
                     Explore by Categories
                 </h2>

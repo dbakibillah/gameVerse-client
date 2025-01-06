@@ -11,12 +11,12 @@ const Banner = () => {
     ];
 
     return (
-        <section className="overflow-x-hidden dark:bg-gray-900">
-            <div className="w-[95%] md:w-5/6 mx-auto">
+        <section className="container mx-auto overflow-x-hidden dark:bg-gray-900">
+            <div className="w-[95%] md:w-11/12 mx-auto">
                 <Slider
                     imageList={images}
                     width="100%"
-                    height={window.innerWidth < 768 ? "40vh" : "70vh"}
+                    height={window.innerWidth < 768 ? "40vh" : "60vh"}
                 />
             </div>
         </section>

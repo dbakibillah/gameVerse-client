@@ -20,6 +20,8 @@ import PrivateRoute from './routes/PrivateRoute.jsx';
 import Watchlist from './pages/Watchlist.jsx';
 import UpdateReview from './pages/UpdateReview.jsx';
 import ThemeProvider from './providers/ThemeProvider.jsx';
+import About from './pages/About.jsx';
+import ContactUs from './components/ContactUs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -66,7 +68,14 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://game-verse-server-six.vercel.app/reviews/${params.id}`),
       },
-
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
+      }
     ]
   },
 ]);

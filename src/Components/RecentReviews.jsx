@@ -19,7 +19,7 @@ const RecentReviews = () => {
 
     return (
         <section className="bg-blue-50 py-10 dark:bg-gray-900">
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="container mx-auto lg:px-24 px-4">
                 <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
                     Recently Added Games
                 </h2>
