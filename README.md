@@ -1,7 +1,13 @@
-```markdown
 # 🎮 GameVerse
 
 **GameVerse** is a dynamic online platform where users can explore a wide range of games, read reviews, add their own reviews, and interact with other gamers in the community. It combines entertainment with a rich, engaging user experience, making it the perfect destination for game enthusiasts.
+
+
+## 🖼 Screenshot
+
+![GameVerse Screenshot](public/gameverse_home.png)
+
+---
 
 ## 🌐 Live Preview
 
@@ -57,7 +63,7 @@ Make sure you have **Node.js** and **npm** installed.
 ```bash
 git clone https://github.com/your-username/gameverse.git
 cd gameverse
-```
+````
 
 2️⃣ **Install Dependencies:**
 ```bash
