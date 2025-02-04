@@ -93,24 +93,3 @@ VITE_appId=YOUR_FIREBASE_APP_ID
 ```
 
 ⚠️ **Never expose your Firebase credentials in public repositories!**
-
----
-
-## 📁 Project Structure
-
-```
-gameverse/
-│── src/
-│   ├── components/     # Reusable components (Navbar, Footer, etc.)
-│   ├── pages/          # Main pages (Home, Login, Reviews, etc.)
-│   ├── providers/      # Context Providers (Auth, Theme)
-│   ├── routes/         # Route Management (Public & Private Routes)
-│   ├── styles/         # Global Styles & Tailwind Config
-│   ├── main.jsx        # Root file with Router setup
-│── public/             # Static assets
-│── .env                # Environment variables
-│── package.json        # Project dependencies & scripts
-│── tailwind.config.js  # Tailwind Configuration
-│── vite.config.js      # Vite Configuration
-└── README.md           # Project documentation
-```
